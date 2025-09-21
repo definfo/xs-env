@@ -2,11 +2,12 @@
   description = "Nix devshells for XiangShan";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/be9e214982e20b8310878ac2baa063a961c1bdf6?narHash=sha256-HM791ZQtXV93xtCY%2BZxG1REzhQenSQO020cu6rHtAPk%3D";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-25.05";
   };
 
   outputs =
-    { nixpkgs, ... }:
+    { nixpkgs, nixpkgs-stable, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -17,6 +18,11 @@
             "espresso"
           ];
       };
+      pkgs-stable = import nixpkgs-stable {
+        inherit system;
+      };
+
+      inherit (pkgs-stable) pypy3;
     in
     {
       devShells.${system}.default = pkgs.mkShell {
@@ -81,6 +87,10 @@
           zlib
           zstd
           sqlite
+
+        ] ++ [
+          # === Pydrofoil ===
+          pypy3 
         ];
         shellHook = ''
           echo "=== Welcome to XiangShan devshell! ==="
@@ -95,6 +105,10 @@
           source ./env.sh
           ln -sf $(which espresso) ./XiangShan/src/main/resources/espresso
           ln -sf $(which firtool) $HOME/.cache/llvm-firtool/1.62.1/bin/firtool
+          
+          ln -sf ${pypy3}/lib/libpypy3.11-c.so libpypy3.11-c.so
+          ln -sf ${pypy3}/lib/libpypy3.11-c.so libpypy3-c.so
+          export LD_LIBRARY_PATH=$PWD
         '';
       };
     };
