@@ -1,3 +1,7 @@
 out/
 .direnv/
 .vscode/
+difftest_pydrofoil_riscv.c
+difftest_pydrofoil_riscv.o
+difftest_pydrofoil_riscv.so
+pypy-c-pydrofoil-riscv.so

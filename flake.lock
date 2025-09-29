@@ -1,29 +1,84 @@
 {
   "nodes": {
-    "nixpkgs": {
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1752077645,
-        "narHash": "sha256-HM791ZQtXV93xtCY+ZxG1REzhQenSQO020cu6rHtAPk=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "be9e214982e20b8310878ac2baa063a961c1bdf6",
+        "lastModified": 1756770412,
+        "narHash": "sha256-+uWLQZccFHwqpGqr2Yt5VsW/PbeJVTn9Dk6SHWhNRPw=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "4524271976b625a4a605beefd893f270620fd751",
         "type": "github"
       },
       "original": {
-        "narHash": "sha256-HM791ZQtXV93xtCY+ZxG1REzhQenSQO020cu6rHtAPk=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "be9e214982e20b8310878ac2baa063a961c1bdf6",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
         "type": "github"
       }
     },
-    "nixpkgs-stable": {
+    "flake-parts_2": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "pydrofoil",
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1758467670,
-        "narHash": "sha256-6Jhm4nh6VsJ5xyikWq/o8Pn8t0bGAbVMtCYL+0WZ6f8=",
+        "lastModified": 1756770412,
+        "narHash": "sha256-+uWLQZccFHwqpGqr2Yt5VsW/PbeJVTn9Dk6SHWhNRPw=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "4524271976b625a4a605beefd893f270620fd751",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-root": {
+      "locked": {
+        "lastModified": 1723604017,
+        "narHash": "sha256-rBtQ8gg+Dn4Sx/s+pvjdq3CB2wQNzx9XGFq/JVGCB6k=",
+        "owner": "srid",
+        "repo": "flake-root",
+        "rev": "b759a56851e10cb13f6b8e5698af7b59c44be26e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "srid",
+        "repo": "flake-root",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1759070547,
+        "narHash": "sha256-JVZl8NaVRYb0+381nl7LvPE+A774/dRpif01FKLrYFQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2eb72df80ed530052e348b835580f37907a37e5f",
+        "rev": "647e5c14cbd5067f44ac86b74f014962df460840",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1758810218,
+        "narHash": "sha256-pYBGIAuvslEa93oF93K2vIsm8WzppAEoWluXsQCT7cE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "08c2ce1f777d8792ccc56f473869f106694fdb80",
         "type": "github"
       },
       "original": {
@@ -33,10 +88,34 @@
         "type": "github"
       }
     },
+    "pydrofoil": {
+      "inputs": {
+        "flake-parts": "flake-parts_2",
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1758869739,
+        "narHash": "sha256-ch1mUgtSsNUXTCXJDsz3Q3R7ZhEl+risWXSl4PXRiy8=",
+        "ref": "nix-support",
+        "rev": "5c2423436b2e10c8f2391214ce8e47e6c03f69e6",
+        "revCount": 1765,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/definfo/pydrofoil"
+      },
+      "original": {
+        "ref": "nix-support",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/definfo/pydrofoil"
+      }
+    },
     "root": {
       "inputs": {
+        "flake-parts": "flake-parts",
+        "flake-root": "flake-root",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-stable": "nixpkgs-stable"
+        "pydrofoil": "pydrofoil"
       }
     }
   },

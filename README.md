@@ -34,6 +34,17 @@ source ./env.sh # setup XiangShan environment variables
 ```
 
 
+## Using Nix
+
+```sh
+nix run nixpkgs#cachix -- use definfo
+nix develop
+
+pushd XiangShan
+make sim REF=Pydrofoil
+./build/emu -i $NOOP_HOME/ready-to-run/linux.bin
+# NOTE: edit $FLAKE_ROOT/pydrofoil_cffi_difftest.py and rerun `nix develop`
+
 # Document
 
 详细使用方式请参考完整文档:
